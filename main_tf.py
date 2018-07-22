@@ -9,9 +9,9 @@ from datasets import CONFIG
 
 
 if __name__ == '__main__':
-
+    REL_PATH = "/home/bill/Desktop/thesis/code/dilation-tensorflow/"
     # Choose between 'cityscapes' and 'camvid'
-    dataset = 'cityscapes'
+    dataset = 'camvid'
 
     # Load dict of pretrained weights
     print('Loading pre-trained weights...')
@@ -25,8 +25,9 @@ if __name__ == '__main__':
         os.makedirs(checkpoint_dir)
 
     # Image in / out parameters
-    input_image_path  = path.join('data', dataset + '.png')
-    output_image_path = path.join('data', dataset + '_out.png')
+    #input_image_path  = path.join('data', dataset + '.png')
+    input_image_path = "/home/bill/Desktop/gsv_examples/row_num_207793_id_kApySdDCXlQDy-NNgE_jQg_head_0_lat_52.37113663706489_lng_4.891840962872775_year_2016"
+    output_image_path = path.join('/home/bill/Desktop/thesis/code/dilation-tensorflow/data', dataset + 'a_out.png')
 
     # Build pretrained model and save it as TF checkpoint
     with tf.Session() as sess:
@@ -57,11 +58,12 @@ if __name__ == '__main__':
         # Read and predict on a test image
         input_image = cv2.imread(input_image_path)
         input_tensor = graph.get_tensor_by_name('input_placeholder:0')
-        predicted_image = predict(input_image, input_tensor, model, dataset, sess)
+        predicted_image, prediction = predict(input_image, input_tensor, model, dataset, sess)
 
-        # Convert colorspace (palette is in RGB) and save prediction result
-        predicted_image = cv2.cvtColor(predicted_image, cv2.COLOR_BGR2RGB)
-        cv2.imwrite(output_image_path, predicted_image)
+        #print(prediction)
+        # # Convert colorspace (palette is in RGB) and save prediction result
+        # predicted_image = cv2.cvtColor(predicted_image, cv2.COLOR_BGR2RGB)
+        # cv2.imwrite(output_image_path, predicted_image)
 
 
 

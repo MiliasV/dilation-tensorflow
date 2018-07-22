@@ -4,7 +4,7 @@ import numpy as np
 CONFIG = {
     'cityscapes': {
         'classes': 19,
-        'weights_file': 'data/pretrained_dilation_cityscapes.pickle',
+        'weights_file': '/home/bill/Desktop/thesis/code/dilation-tensorflow/data/pretrained_dilation_cityscapes.pickle',
         'input_shape': (1396, 1396, 3),
         'output_shape': (1024, 1024, 19),
         'mean_pixel': (72.39, 82.91, 73.16),
@@ -32,7 +32,7 @@ CONFIG = {
     },
     'camvid': {
         'classes': 11,
-        'weights_file': 'data/pretrained_dilation_camvid.pickle',
+        'weights_file': '/home/bill/Desktop/thesis/code/dilation-tensorflow/data/pretrained_dilation_camvid.pickle',
         'input_shape': (900, 1100, 3),
         'output_shape': (66, 91, 11),
         'mean_pixel': (110.70, 108.77, 105.41),

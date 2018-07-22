@@ -73,5 +73,4 @@ def predict(image, input_tensor, model, ds, sess):
 
     prediction = np.argmax(prob, axis=2)
     color_image = CONFIG[ds]['palette'][prediction.ravel()].reshape(image_size)
-
-    return color_image
+    return color_image, prediction
